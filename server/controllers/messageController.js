@@ -54,6 +54,14 @@ module.exports.checkMessage = async (req, res, next) => {
   // await axios.post('https://www.purgomalum.com/service/json?aasdf')
       .then(response => {
         console.log('Response: ' + response.data);
+        
+        if (response.data === false) {
+          socket.current.emit("send-msg", {
+            to: to,
+            from: from,
+            msg,
+          });
+        }
         return res.json({ msg: response.data });
       })
       .catch(error => {

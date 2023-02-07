@@ -49,11 +49,11 @@ export default function ChatContainer({ currentChat, socket }) {
 
     if (checkResponse.data.msg === false) {
   
-      socket.current.emit("send-msg", {
-        to: currentChat._id,
-        from: data._id,
-        msg,
-      });
+      // socket.current.emit("send-msg", {
+      //   to: currentChat._id,
+      //   from: data._id,
+      //   msg,
+      // });
       await axios.post(sendMessageRoute, {
         from: data._id,
         to: currentChat._id,
